@@ -1,20 +1,82 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// UCM Interior Maps Code
 
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+//Imports are ordered as they appear in the React Navigation function below
+import StartScreen from "./app/screens/StartScreen";
+import HumphreysScreen from "./app/screens/HumphreysScreen";
+import EdwardsScreen from "./app/screens/EdwardsScreen";
+import MorrisScreen from "./app/screens/MorrisScreen";
+
+const Stack = createNativeStackNavigator();
+
+//React Navigation function that manages each screen
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* Start Screen */}
+        <Stack.Screen 
+        name="start" 
+        component={StartScreen} 
+        options={{ 
+          title: 'UCM Interior Maps',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#cf202e',
+          },
+          headerTitleAlign: 'center' }}/>
+          
+        {/* P A Humphreys Screen */}
+        <Stack.Screen
+        name="humphreys"
+        component={HumphreysScreen}
+        options={{
+          title: 'P. A. Humphreys',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#cf202e',
+          },
+          headerTitleAlign: 'center'  }}/>
+
+        {/* Ward Edwards Screen */}
+        <Stack.Screen
+        name="edwards"
+        component={EdwardsScreen}
+        options={{
+          title: 'Ward Edwards',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#cf202e',
+          },
+          headerTitleAlign: 'center'  }}/>
+
+        {/* W C Morris Screen */}
+        <Stack.Screen
+        name="morris"
+        component={MorrisScreen}
+        options={{
+          title: 'W. C. Morris',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#cf202e',
+          },
+          headerTitleAlign: 'center'  }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
